@@ -1,6 +1,5 @@
 <div class="wrapper side-panel-open" id="wrapper">  
   <div class="Main">
-    <button (click)="sortUser()">Sort Data</button>
     <div *ngIf="currentFile" class="progress my-3">
       <div
         class="progress-bar progress-bar-info progress-bar-striped"
@@ -14,7 +13,10 @@
       </div>
     </div>
     <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
-    <div class="flex text-center">List of Files</div>
+    <div class="flex text-center list-header" >
+      <span class="fs-3 fw-bolder ">List of Files</span>
+    </div>    
+    <button (click)="sortUser()">Sort Data</button>
       <div class="row">
         <div class="col-4 text-center" id="files-from-api"
         *ngFor="let file of fileInfos | async">
@@ -38,12 +40,12 @@
         <div class="">
             <div class="text-center">
               <h2>FILE</h2>
-              <img id="selected_file_preview" src="./assets/placeHolderImage.png" alt="your image"/><br>
+              <img class="image-holder" id="selected_file_preview" src="./assets/placeHolderImage.png" alt="your image"/><br>
               <input type="file" id="selected_file" name="selected_file" (change)="selectFile($event)" />
             </div>
             <div class="text-center overflow-ellipsis">
               <h2>THUMBNAIL</h2>
-              <img id="selected_thumbnail_preview" src="./assets/placeHolderImage.png" alt="your thumbnail"/><br>
+              <img class="image-holder" id="selected_thumbnail_preview" src="./assets/placeHolderImage.png" alt="your thumbnail"/><br>
               <input type="file" id="selected_thumbnail" name="selected_thumbnail" (change)="selectThumbnail($event)"/>
             </div>
              <br>
