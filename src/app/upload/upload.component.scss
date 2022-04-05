@@ -78,13 +78,29 @@ body {
 }
 
 #files-from-api {
-  height: 200px;
+  max-height: 200px;
   width: 300px;
   justify-self: center;
   align-items: center;
-  padding-left: 5px;
+  padding: 5px;
   margin: 20px;
+  background-color: #666366;
   border: 1px solid;
   border-style: double;
   border-color: #952a00;
+  border-radius: 8px;
+}
+
+.image-holder {
+  border-color: black;
+  border-style: dashed;  
+}
+
+a {
+ color: #691f01; 
+ max-width: 260px !important;
+}
+
+button {
+  margin: 5px;
 }

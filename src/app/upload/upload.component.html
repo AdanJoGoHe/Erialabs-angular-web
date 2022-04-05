@@ -1,5 +1,5 @@
 <div class="wrapper side-panel-open" id="wrapper">  
-  <div class="">
+  <div class="Main">
     <button (click)="sortUser()">Sort Data</button>
     <div *ngIf="currentFile" class="progress my-3">
       <div
@@ -14,12 +14,18 @@
       </div>
     </div>
     <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
-    <div class="flex">List of Files</div>
+    <div class="flex text-center">List of Files</div>
       <div class="row">
         <div class="col-4 text-center" id="files-from-api"
         *ngFor="let file of fileInfos | async">
-          <a href="{{ file['name'] }}">{{ file['name'] }}</a><br>
+        <div>
+          <a class="d-inline-block text-truncate" href="{{ file['name'] }}">{{ file['name'] }}</a><br>
           <img class="file-list-image" src="https://i.imgur.com/UEVhTV4.jpg" />
+        </div>      
+        <div>
+          <button type="button" class="btn btn-primary" (click)="downloadFile(file['name'])">DOWNLOAD</button>
+          <button  type="button" class="btn btn-outline-danger">DELETE</button>
+        </div>    
       </div>
     </div> 
   </div>
@@ -35,7 +41,7 @@
               <img id="selected_file_preview" src="./assets/placeHolderImage.png" alt="your image"/><br>
               <input type="file" id="selected_file" name="selected_file" (change)="selectFile($event)" />
             </div>
-            <div class="text-center">
+            <div class="text-center overflow-ellipsis">
               <h2>THUMBNAIL</h2>
               <img id="selected_thumbnail_preview" src="./assets/placeHolderImage.png" alt="your thumbnail"/><br>
               <input type="file" id="selected_thumbnail" name="selected_thumbnail" (change)="selectThumbnail($event)"/>

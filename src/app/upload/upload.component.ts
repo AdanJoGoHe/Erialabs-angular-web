@@ -74,8 +74,8 @@ export class UploadComponent implements OnInit {
               this.progress = Math.round(100 * event.loaded / event.total);
             } else if (event instanceof HttpResponse) {
               this.message = event.body.message;
+              console.log("Mensaje de confirmacion?" +  event.body.message)
               this.fileInfos = this.dataSvc.getFiles();
-              this.fileInfos.subscribe(files => console.log(files))
             }
           },
           error: (err: any) => {
@@ -92,6 +92,15 @@ export class UploadComponent implements OnInit {
       }
       this.selectedFiles = undefined;
     }
+  }
+
+  downloadFile(event:string){
+    var response = this.dataSvc.downloadFile(event).subscribe((response: any) => {
+      window.location.href = response.url;
+      window.open(response.url)
+    });
+    
+    
   }
 
   sortList() {
