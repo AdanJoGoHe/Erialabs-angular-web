@@ -31,6 +31,10 @@ body {
   background: #691f01;
 }
 
+.file-list-image {
+  height: 100px;
+}
+
 .sp-icon-close {
   display: none !important;
 }
@@ -71,4 +75,16 @@ body {
 #selected_thumbnail_preview {
   max-width: 300px;
   height: 200px;
+}
+
+#files-from-api {
+  height: 200px;
+  width: 300px;
+  justify-self: center;
+  align-items: center;
+  padding-left: 5px;
+  margin: 20px;
+  border: 1px solid;
+  border-style: double;
+  border-color: #952a00;
 }

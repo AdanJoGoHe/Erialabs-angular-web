@@ -1,5 +1,5 @@
 <div class="wrapper side-panel-open" id="wrapper">  
-  <div class="col-7">
+  <div class="">
     <button (click)="sortUser()">Sort Data</button>
     <div *ngIf="currentFile" class="progress my-3">
       <div
@@ -14,18 +14,14 @@
       </div>
     </div>
     <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
-    <div class="card mt-3">
-      <div class="card-header">List of Files</div>
-        <ul
-          class="list-group list-group-flush" id="id01"
-          *ngFor="let file of fileInfos | async"
-        >
-          <li class="list-group-item">
-            <a href="{{ file['name'] }}">{{ file['name'] }}</a>
-            <img src="{{file['file']}}">
-          </li>
-        </ul>
-    </div>  
+    <div class="flex">List of Files</div>
+      <div class="row">
+        <div class="col-4 text-center" id="files-from-api"
+        *ngFor="let file of fileInfos | async">
+          <a href="{{ file['name'] }}">{{ file['name'] }}</a><br>
+          <img class="file-list-image" src="https://i.imgur.com/UEVhTV4.jpg" />
+      </div>
+    </div> 
   </div>
   <div class="side-panel-all">
     <button class="side-panel-toggle" type="button" (click)="toggleSidePanel()">

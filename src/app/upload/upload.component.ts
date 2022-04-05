@@ -6,6 +6,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
 import {FileData} from "../interfaces/file-data";
 import {tap} from "rxjs/operators";
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-upload',
@@ -23,10 +24,11 @@ export class UploadComponent implements OnInit {
   fileInfos?: Observable<any>;
 
   ngOnInit() {}
+  // CONSTRUCTOR
   constructor(public http: HttpClient, private dataSvc: DataService) {
     this.fileInfos = this.dataSvc.getFiles();
-
   }
+
 
   toggleSidePanel() {
     var wrapper = (<HTMLInputElement>document.getElementById("wrapper"))
@@ -94,7 +96,7 @@ export class UploadComponent implements OnInit {
 
   sortList() {
     var list, i, switching, b, shouldSwitch;
-    list = document.getElementById("id01");
+    list = document.getElementById("files-from-api");
     switching = true;
     while (switching) {
       switching = false;
