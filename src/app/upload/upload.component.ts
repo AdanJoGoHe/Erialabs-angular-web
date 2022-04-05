@@ -28,6 +28,11 @@ export class UploadComponent implements OnInit {
 
   }
 
+  toggleSidePanel() {
+    var wrapper = (<HTMLInputElement>document.getElementById("wrapper"))
+    wrapper.classList.toggle("side-panel-open")
+  }
+
   selectThumbnail(event: any) {
     var thumbnailPreview = (<HTMLInputElement>document.getElementById("selected_thumbnail_preview"))
     thumbnailPreview.src = URL.createObjectURL(event.target.files[0]);
@@ -35,14 +40,20 @@ export class UploadComponent implements OnInit {
   }
 
   selectFile(event: any): void {  
-     var filePreview = (<HTMLInputElement>document.getElementById("selected_file_preview"))
-     console.log(event.target.files[0]);
-     if(event.target.files[0].type == "image/png")
-     {
-       console.log("Waaaw")
+     var filePreview = (<HTMLInputElement>document.getElementById("selected_file_preview"))     
+     const selectedFile = event.target.files[0];
+     console.log(selectedFile);
+     if(selectedFile.type == "image/png")
+     {       
+      filePreview.src = URL.createObjectURL(selectedFile);
        this.selectThumbnail(event)
      }
-     filePreview.src = URL.createObjectURL(event.target.files[0]);
+     if(selectedFile.name.includes('unity'))
+     {
+       console.log("Im Unity");
+      filePreview.src = "https://i.imgur.com/Kh0yY9H.png";
+      
+     }
     this.selectedFiles = event.target.files;
     
   }

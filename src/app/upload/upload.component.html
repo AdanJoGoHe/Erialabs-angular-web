@@ -1,53 +1,56 @@
-<div class="wrapper flex">
-  <div class="">
-    <div class="row">
-        <div class="text-center col-6 ">
-          <img id="selected_file_preview" src="#" alt="your image"/><br>
-          <input type="file" id="selected_file" name="selected_file" (change)="selectFile($event)" />
-        </div>
-        <div class="text-center col-6">
-          <img id="selected_thumbnail_preview" src="#" alt="your image"/><br>
-          <input type="file" id="selected_thumbnail" name="selected_thumbnail" (change)="selectThumbnail($event)"/>
-        </div>
-         <br>
-    </div>
-    <div class="col-4">
-      <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
-        Upload
-      </button>
-    </div>
-  </div>
-  <button (click)="sortUser()">Sort Data</button>
-  <div *ngIf="currentFile" class="progress my-3">
-    <div
-      class="progress-bar progress-bar-info progress-bar-striped"
-      role="progressbar"
-      attr.aria-valuenow="{{ progress }}"
-      aria-valuemin="0"
-      aria-valuemax="100"
-      [ngStyle]="{ width: progress + '%' }"
-    >
-      {{ progress }}%
-    </div>
-  </div>
-  <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
-  <div class="card mt-3">
-    <div class="card-header">List of Files</div>
-      <ul
-        class="list-group list-group-flush" id="id01"
-        *ngFor="let file of fileInfos | async"
+<div class="wrapper side-panel-open" id="wrapper">  
+  <div class="col-7">
+    <button (click)="sortUser()">Sort Data</button>
+    <div *ngIf="currentFile" class="progress my-3">
+      <div
+        class="progress-bar progress-bar-info progress-bar-striped"
+        role="progressbar"
+        attr.aria-valuenow="{{ progress }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [ngStyle]="{ width: progress + '%' }"
       >
-        <li class="list-group-item">
-          <a href="{{ file['name'] }}">{{ file['name'] }}</a>
-          <img src="{{file['file']}}">
-        </li>
-      </ul>
-  </div>  
-  <button class="side-panel-toggle" type="button">
-    <span class="material-icons sp-icon-open">keyboard_double_arrow_left</span>
-    <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
-  </button>
-  <div class="side-panel">
-    Ekisde
+        {{ progress }}%
+      </div>
+    </div>
+    <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
+    <div class="card mt-3">
+      <div class="card-header">List of Files</div>
+        <ul
+          class="list-group list-group-flush" id="id01"
+          *ngFor="let file of fileInfos | async"
+        >
+          <li class="list-group-item">
+            <a href="{{ file['name'] }}">{{ file['name'] }}</a>
+            <img src="{{file['file']}}">
+          </li>
+        </ul>
+    </div>  
   </div>
+  <div class="side-panel-all">
+    <button class="side-panel-toggle" type="button" (click)="toggleSidePanel()">
+      <span class="material-icons sp-icon-open">keyboard_double_arrow_left</span>
+      <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
+    </button>
+    <div class="side-panel align-right">
+        <div class="">
+            <div class="text-center">
+              <h2>FILE</h2>
+              <img id="selected_file_preview" src="./assets/placeHolderImage.png" alt="your image"/><br>
+              <input type="file" id="selected_file" name="selected_file" (change)="selectFile($event)" />
+            </div>
+            <div class="text-center">
+              <h2>THUMBNAIL</h2>
+              <img id="selected_thumbnail_preview" src="./assets/placeHolderImage.png" alt="your thumbnail"/><br>
+              <input type="file" id="selected_thumbnail" name="selected_thumbnail" (change)="selectThumbnail($event)"/>
+            </div>
+             <br>
+        </div>
+        <div class="">
+          <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
+            Upload
+          </button>
+        </div>
+    </div>
+  </div>  
 </div>
