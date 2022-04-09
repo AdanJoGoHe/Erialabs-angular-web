@@ -12,6 +12,13 @@
         <a class="nav-link" routerLink="upload-component">Files-Storage</a>
       </li>
     </ul>
+    <div class="row">      
+      <a class="col-3" href="http://localhost:8080">
+        <img src="./assets/discord_logo.png" class="login-image col-8" id="login-image" alt="">
+      </a>      
+      <h4 class="col-4 text-primary" id="username">{{userUsername}}</h4>
+    </div>
+    <button (click)="oauthLogin()"></button>
   </div>
 </nav>
 <router-outlet></router-outlet>

@@ -68,7 +68,7 @@ export class UploadComponent implements OnInit {
       if (file && thumbnail) {
         this.currentFile = file;
         this.currentThumbnail = thumbnail;
-        this.dataSvc.upload(this.currentFile, this.currentThumbnail, "XD").subscribe({
+        this.dataSvc.upload(this.currentFile, this.currentThumbnail, "testtext").subscribe({
           next: (event: any) => {
             if (event.type === HttpEventType.UploadProgress) {
               this.progress = Math.round(100 * event.loaded / event.total);

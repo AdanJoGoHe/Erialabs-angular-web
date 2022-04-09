@@ -46,6 +46,7 @@ body {
 
 .side-panel {
   display: none;
+  position: relative;
   max-width: 400px;  
   flex-shrink: 0;
   justify-self: end;

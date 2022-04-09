@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpEvent, HttpHeaders, HttpParams, HttpRequest, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpEvent, HttpHeaders, HttpParams, HttpRequest, HttpResponse, HttpClientXsrfModule} from "@angular/common/http";
 import {Observable} from "rxjs";
 import * as cons from "../constants.module";
+import { UserInfo } from '../interfaces/user-info';
 
 @Injectable()
 export class DataService {
@@ -35,8 +36,11 @@ export class DataService {
   }
 
   downloadFile(fileName:string): Observable<HttpResponse<any>>{		
-		return this.http.get(`${this.SERVER_URL}/files/${fileName}`, {observe: 'response', responseType: 'blob'});
-    
+		return this.http.get(`${this.SERVER_URL}/files/${fileName}`, {observe: 'response', responseType: 'blob'});    
+   }
+
+   oauthLogin(): Observable<any>{
+    return this.http.get(`${this.SERVER_URL}/user`);   
    }
 }
 
